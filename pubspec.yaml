@@ -35,7 +35,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: flutter_bugly
+        package: flutter_buggly
         pluginClass: FlutterBuglyPlugin
       ios:
         pluginClass: FlutterBuglyPlugin
