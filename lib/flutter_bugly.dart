@@ -1,7 +1,6 @@
 import 'flutter_bugly_platform_interface.dart';
 
 class FlutterBugly {
-
   static final FlutterBugly instance = FlutterBugly();
 
   Future<String?> getPlatformVersion() {
@@ -18,8 +17,8 @@ class FlutterBugly {
   /*
   * 初始化
   * */
-  Future<void> init(bool? isDebug) async {
-    await FlutterBuglyPlatform.instance.init(isDebug ?? false);
+  Future<void> init(String buglyAppId, bool? isDebug) async {
+    await FlutterBuglyPlatform.instance.init(buglyAppId, isDebug ?? false);
   }
 
   /*
@@ -44,6 +43,7 @@ class FlutterBugly {
   Future<void> reportError(dynamic error, dynamic stackTrace) async {
     await FlutterBuglyPlatform.instance.reportFlutterError(error, stackTrace);
   }
+
   Future<void> reportFlutterLog(Map info) async {
     await FlutterBuglyPlatform.instance.reportFlutterLog(info);
   }

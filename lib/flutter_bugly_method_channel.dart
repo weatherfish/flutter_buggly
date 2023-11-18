@@ -11,8 +11,7 @@ class MethodChannelFlutterBugly extends FlutterBuglyPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 
@@ -23,8 +22,8 @@ class MethodChannelFlutterBugly extends FlutterBuglyPlatform {
   }
 
   @override
-  Future<void> init(bool isDebug) async {
-    await methodChannel.invokeMethod<void>('init', {'isDebug': isDebug ? 1 : 0});
+  Future<void> init(String appId, bool isDebug) async {
+    await methodChannel.invokeMethod<void>('init', {'buglyAppId': appId, 'isDebug': isDebug ? 1 : 0});
   }
 
   @override
@@ -48,20 +47,20 @@ class MethodChannelFlutterBugly extends FlutterBuglyPlatform {
 
   @override
   Future<void> setDeviceModel(String? deviceModel) async {
-    if(deviceModel==null) return;
+    if (deviceModel == null) return;
     await methodChannel.invokeMethod<void>('setDeviceModel', {'deviceModel': deviceModel});
   }
 
   @override
   Future<void> reportFlutterError(dynamic error, dynamic stackTrace) async {
-    if(error==null&&stackTrace==null) return;
-    await methodChannel.invokeMethod<void>('postException', {'crash_message': error.toString(),'crash_detail':stackTrace.toString()});
+    if (error == null && stackTrace == null) return;
+    await methodChannel.invokeMethod<void>(
+        'postException', {'crash_message': error.toString(), 'crash_detail': stackTrace.toString()});
   }
 
   @override
-  Future<void> reportFlutterLog(Map logInfo) async{
-    if(logInfo.isEmpty) return;
-    await methodChannel.invokeMethod<void>('flutterLog',{'logMessage':logInfo});
+  Future<void> reportFlutterLog(Map logInfo) async {
+    if (logInfo.isEmpty) return;
+    await methodChannel.invokeMethod<void>('flutterLog', {'logMessage': logInfo});
   }
-
 }

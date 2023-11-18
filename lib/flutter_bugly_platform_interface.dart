@@ -39,7 +39,7 @@ abstract class FlutterBuglyPlatform extends PlatformInterface {
     throw UnimplementedError('setVersion() has not been implemented.');
   }
 
-  Future<void> init(bool isDebug) {
+  Future<void> init(String appId, bool isDebug) {
     throw UnimplementedError('init() has not been implemented.');
   }
 

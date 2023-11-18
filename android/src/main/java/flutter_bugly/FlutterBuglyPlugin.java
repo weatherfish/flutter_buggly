@@ -75,7 +75,10 @@ public class FlutterBuglyPlugin implements FlutterPlugin, MethodCallHandler {
                 break;
             case "init":
                 createConfigIfNeed();
-                String buglyAppId = "85c5c29cae";
+                String buglyAppId="";
+                if (call.hasArgument("buglyAppId")) {
+                    userId = call.argument("buglyAppId");
+                }
                 boolean isDebug = BuildConfig.DEBUG;
                 if (call.hasArgument("isDebug")) {
                     int debug = call.argument("isDebug");
@@ -138,8 +141,6 @@ public class FlutterBuglyPlugin implements FlutterPlugin, MethodCallHandler {
                 if (call.hasArgument("channel")) {
                     strategy.setAppChannel(call.argument("channel"));
                 }
-                String channelName = AppUtil.getMetadata(applicationContext, "UMENG_CHANNEL");
-                strategy.setAppChannel(channelName);
                 result.success(true);
                 break;
 
