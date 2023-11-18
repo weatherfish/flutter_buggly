@@ -75,7 +75,7 @@ public class FlutterBuglyPlugin implements FlutterPlugin, MethodCallHandler {
                 break;
             case "init":
                 createConfigIfNeed();
-                String buglyAppId = AppUtil.getMetadata(applicationContext, "BUGLY_APPID");
+                String buglyAppId = "85c5c29cae";
                 boolean isDebug = BuildConfig.DEBUG;
                 if (call.hasArgument("isDebug")) {
                     int debug = call.argument("isDebug");
@@ -189,24 +189,16 @@ public class FlutterBuglyPlugin implements FlutterPlugin, MethodCallHandler {
                         if (TextUtils.isEmpty(tag) || TextUtils.isEmpty(level) || TextUtils.isEmpty(messageInfo))
                             return;
                         switch (level) {
-                            case "v":
+                            case "FINE":
                                 BuglyLog.v(tag, messageInfo);
                                 result.success(true);
                                 break;
-                            case "d":
-                                BuglyLog.d(tag, messageInfo);
-                                result.success(true);
-                                break;
-                            case "i":
+                            case "INFO":
                                 BuglyLog.i(tag, messageInfo);
                                 result.success(true);
                                 break;
-                            case "w":
+                            case "WARNING":
                                 BuglyLog.w(tag, messageInfo);
-                                result.success(true);
-                                break;
-                            case "e":
-                                BuglyLog.e(tag, messageInfo);
                                 result.success(true);
                                 break;
                             default:

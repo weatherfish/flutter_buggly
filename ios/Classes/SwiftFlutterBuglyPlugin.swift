@@ -32,7 +32,7 @@ public class SwiftFlutterBuglyPlugin: NSObject, FlutterPlugin {
                let isDebug = params["isDebug"] as? Int {
                 p_config?.debugMode = (isDebug == 1)
             }
-            Bugly.start(withAppId: "f328876846", config: p_config)
+            Bugly.start(withAppId: "85c5c29cae", config: p_config)
             result(true);
         case "setChannel":
             createConfigIfNeed()
@@ -72,20 +72,14 @@ public class SwiftFlutterBuglyPlugin: NSObject, FlutterPlugin {
                    let level = message["level"] as? String {
                     
                     switch level {
-                    case "v":
+                    case "FINE":
                         BuglyLog.level(.verbose, logs: msgInfo)
                         break
-                    case "d":
-                        BuglyLog.level(.debug, logs: msgInfo)
-                        break
-                    case "i":
+                    case "INFO":
                         BuglyLog.level(.info, logs: msgInfo)
                         break
-                    case "w":
+                    case "WARNING":
                         BuglyLog.level(.warn, logs: msgInfo)
-                        break
-                    case "e":
-                        BuglyLog.level(.error, logs: msgInfo)
                         break
                     default: break
                     }
