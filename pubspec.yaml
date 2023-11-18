@@ -1,4 +1,4 @@
-name: flutter_buggly
+name: flutter_bugly
 description: A new Flutter project.
 version: 0.0.1
 homepage:
@@ -35,7 +35,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: flutter_buggly
+        package: flutter_bugly
         pluginClass: FlutterBuglyPlugin
       ios:
         pluginClass: FlutterBuglyPlugin
