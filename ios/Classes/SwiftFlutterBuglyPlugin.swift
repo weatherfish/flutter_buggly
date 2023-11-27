@@ -29,7 +29,7 @@ public class SwiftFlutterBuglyPlugin: NSObject, FlutterPlugin {
         case "init":
             createConfigIfNeed()
             if let params = call.arguments as? NSDictionary,
-               let buglyAppId = params["buglyAppId"] as? String
+               let buglyAppId = params["buglyAppId"] as? String,
                let isDebug = params["isDebug"] as? Int{
                 p_config?.debugMode = (isDebug == 1)
             }
