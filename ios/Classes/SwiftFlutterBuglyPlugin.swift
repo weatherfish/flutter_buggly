@@ -32,9 +32,8 @@ public class SwiftFlutterBuglyPlugin: NSObject, FlutterPlugin {
                let buglyAppId = params["buglyAppId"] as? String,
                let isDebug = params["isDebug"] as? Int{
                 p_config?.debugMode = (isDebug == 1)
+                Bugly.start(withAppId:buglyAppId, config: p_config)
             }
-
-            Bugly.start(withAppId: buglyAppId, config: p_config)
             result(true);
         case "setChannel":
             createConfigIfNeed()
