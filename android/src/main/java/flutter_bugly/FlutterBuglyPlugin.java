@@ -190,16 +190,24 @@ public class FlutterBuglyPlugin implements FlutterPlugin, MethodCallHandler {
                         if (TextUtils.isEmpty(tag) || TextUtils.isEmpty(level) || TextUtils.isEmpty(messageInfo))
                             return;
                         switch (level) {
+                            case "FINEST":
+                            case "FINER":
                             case "FINE":
                                 BuglyLog.v(tag, messageInfo);
                                 result.success(true);
                                 break;
+                            case "CONFIG":
                             case "INFO":
                                 BuglyLog.i(tag, messageInfo);
                                 result.success(true);
                                 break;
                             case "WARNING":
                                 BuglyLog.w(tag, messageInfo);
+                                result.success(true);
+                                break;
+                            case "SEVERE":
+                            case "SHOUT":
+                                BuglyLog.e(tag, messageInfo);
                                 result.success(true);
                                 break;
                             default:
