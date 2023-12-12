@@ -72,13 +72,20 @@ public class SwiftFlutterBuglyPlugin: NSObject, FlutterPlugin {
                 if let msgInfo = message["LogInfo"] as? String,
                    let level = message["level"] as? String {
                     switch level {
+                    case "FINEST":
+                    case "FINER":
                     case "FINE":
                         BuglyLog.level(.verbose, logs: msgInfo)
                         break
+                    case "CONFIG":
                     case "INFO":
                         BuglyLog.level(.info, logs: msgInfo)
                         break
                     case "WARNING":
+                        BuglyLog.level(.warn, logs: msgInfo)
+                        break
+                    case "SEVERE":
+                    case "SHOUT":
                         BuglyLog.level(.warn, logs: msgInfo)
                         break
                     default: break
