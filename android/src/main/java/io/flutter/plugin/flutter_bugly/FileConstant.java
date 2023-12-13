@@ -1,4 +1,4 @@
-package flutter_bugly;
+package io.flutter.plugin.flutter_bugly;
 
 /**
  * 【说明】：文件操作常量

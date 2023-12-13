@@ -1,4 +1,4 @@
-package flutter_bugly;
+package io.flutter.plugin.flutter_bugly;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
