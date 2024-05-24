@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'flutter_bugly_platform_interface.dart';
 
 class FlutterBugly {
@@ -17,8 +19,12 @@ class FlutterBugly {
   /*
   * 初始化
   * */
-  Future<void> init(String buglyAppId, bool? isDebug) async {
-    await FlutterBuglyPlatform.instance.init(buglyAppId, isDebug ?? false);
+  Future<void> init(String androidAppId, String iosAppId, bool? isDebug) async {
+    if (Platform.isAndroid) {
+      await FlutterBuglyPlatform.instance.init(androidAppId, isDebug ?? false);
+    } else if (Platform.isIOS) {
+      await FlutterBuglyPlatform.instance.init(iosAppId, isDebug ?? false);
+    }
   }
 
   /*

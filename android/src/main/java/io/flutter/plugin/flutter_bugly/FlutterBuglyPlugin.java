@@ -77,7 +77,7 @@ public class FlutterBuglyPlugin implements FlutterPlugin, MethodCallHandler {
                 createConfigIfNeed();
                 String buglyAppId="";
                 if (call.hasArgument("buglyAppId")) {
-                    userId = call.argument("buglyAppId");
+                    buglyAppId = call.argument("buglyAppId");
                 }
                 boolean isDebug = BuildConfig.DEBUG;
                 if (call.hasArgument("isDebug")) {
